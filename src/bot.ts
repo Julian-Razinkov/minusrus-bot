@@ -8,14 +8,15 @@ export class Bot{
     private parser = new Parser()
     
     public async sendCasualties(){
+
         const casualties = await this.parser.parseCasualties();
-        this.telegrafBot.start((ctx) => ctx.reply("Привіт, я бот який буде піднімати тобі настрій\nя поділюся з тобою втратим русні😉, напиши у чаті /cas"));
+        this.telegrafBot.start((ctx) => ctx.reply("Hi, to start a bot type \"/cas\" in the chat!"));
         this.telegrafBot.command('/cas', (ctx) => {
             const replyString = casualties.join('\n')
             ctx.reply(replyString)
         })
-        this.telegrafBot.launch()
-        console.log('Bot is working!');
         
+        this.telegrafBot.launch()
+        console.log('Bot is working!');  
     } 
 }
